@@ -1,14 +1,15 @@
 class Solution {
 int removeDuplicates(List<int> nums) {
-  if (nums.length < 3) {
-    return nums.length;
-  }
-  for (var i = 0; i < nums.length; i++) {
-    if (i == nums.length - 2) {
-      break;
+  for (int i = 0; i < nums.length; i++) {
+    int count = 0;
+    for (int j = 0; j < nums.length; j++) {
+      if (nums[i] == nums[j]) {
+        count++;
+      }
     }
-    if (nums[i] == nums[i + 1] && nums[i] == nums[i + 2]) {
-      nums.removeAt(i--);
+    if (count > 2) {
+      nums.removeAt(i);
+      i--;
     }
   }
   return nums.length;
